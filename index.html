@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tapasya Lite</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    /* Full-screen mobile-friendly background */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
+      background: url('photo1.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center; /* vertically center */
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 36px;
+      text-shadow: 2px 2px 5px black;
+      margin-bottom: 30px;
+    }
+
+    button {
+      padding: 15px 25px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      background-color: #ffcc00;
+      color: black;
+      font-weight: bold;
+      text-shadow: 1px 1px 2px black;
+    }
+
+    #loading {
+      display: none;
+      margin-top: 20px;
+      font-size: 20px;
+      color: #00ffcc;
+      text-shadow: 1px 1px 3px black;
+    }
+
+    #videoContainer {
+      display: none;
+      width: 90%;         /* mobile friendly */
+      max-width: 600px;
+      margin: 20px auto;
+      position: relative;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    video {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    #funnyText {
+      margin-top: 10px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #ffd700;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 10px;
+      border-radius: 8px;
+      text-shadow: 1px 1px 2px black;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 28px;
+      }
+      button {
+        font-size: 16px;
+        padding: 12px 20px;
+      }
+      #funnyText {
+        font-size: 18px;
+        padding: 8px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Initial centered screen -->
+  <div id="startScreen">
+    <h1>🙏 Tapasya Lite 🙏</h1>
+    <button onclick="startBlessing()">Click here for blessing</button>
+  </div>
+
+  <!-- Loading text -->
+  <div id="loading">
+    🔌 Connecting to Baba Server...
+  </div>
+
+  <!-- Video section -->
+  <div id="videoContainer">
+    <video id="blessingVideo">
+      <source src="video1.mp4" type="video/mp4">
+    </video>
+    <div id="funnyText">
+      😂 APNE TRAINING PE VISHWAS KARO... BABA PE NAHI 😂
+    </div>
+  </div>
+
+  <script>
+    function startBlessing() {
+      const startScreen = document.getElementById("startScreen");
+      const loading = document.getElementById("loading");
+      const container = document.getElementById("videoContainer");
+      const video = document.getElementById("blessingVideo");
+
+      // Hide initial screen
+      startScreen.style.display = "none";
+
+      // Show loading
+      loading.style.display = "block";
+
+      setTimeout(() => {
+        loading.innerText = "📡 Blessing Received from Baba Server...";
+      }, 1500);
+
+      setTimeout(() => {
+        loading.style.display = "none";
+        container.style.display = "flex";
+
+        // Play video
+        video.play();
+      }, 3000);
+    }
+  </script>
+
+</body>
+</html>
